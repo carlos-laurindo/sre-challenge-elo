@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-team-a-traffic
+  namespace: team-a  # Substitua pelo namespace onde a aplicação está
+spec:
+  podSelector:
+    matchLabels:
+      app: sre-challenge-app  # Seleciona o pod com esse label
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              team: team-a  # Permite o tráfego apenas de pods dentro do namespace team-a
+          podSelector: {}  # Permite todos os pods dentro do namespace team-a
+      ports:
+        - protocol: TCP
+          port: 8080  # Porta do serviço (ajuste conforme necessário)
+  policyTypes:
+    - Ingress
