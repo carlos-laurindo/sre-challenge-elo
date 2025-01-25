@@ -80,6 +80,8 @@ Requisitos
 
 3. Manifestos de implantação do kubernetes para executar com limitação de requests e usando HPA.
 
+   [app-deployment.yaml](app-deployment.yaml)
+
 ### Parte 2 - Corrigir o problema
 
 A aplicação tem um problema. Encontre e corrija! Você saberá que corrigiu o problema quando o estado dos pods no namespaces for semelhante a este:
@@ -106,10 +108,12 @@ Essa alteração permitiu que a aplicação fosse iniciada corretamente, pois ag
 
 Essa aplicação tem uma falha de segurança e gostariamos que as credenciais do MYSQL fossem armazenadas em uma secret do Kubernetes.
 
+[mysql-secret.yaml](mysql-secret.yaml)
    
 Requisitos
 1. Manifesto do kubernetes usando a API de secret com as credenciais do Banco para implantação.
-2. Manifesto do kunernetes da aplicação com as informações da secret criada anteriormente.
+   
+3. Manifesto do kunernetes da aplicação com as informações da secret criada anteriormente.
 2. Configuração do código da aplicação utilizando uma variável que foi referenciada no secrets do K8s (Application Properties do Java)
 
 ### Parte 4 - Perguntas
