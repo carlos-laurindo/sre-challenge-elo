@@ -171,13 +171,13 @@ Essas abordagens garantem maior segurança, isolamento e controle sobre o tráfe
 
 Idealmente, gostaríamos de ver sua progressão através de commits, verbosidade em suas respostas e todos os requisitos atendidos. Não se esqueça de atualizar o README.md para explicar seu processo de pensamento.
 
-## Entrega do desafio:
+## Entrega do desafio: Carlos Alberto Laurindo Junior // CCE ELO 
+# Desafio repassado ao CCE para treino, espero ter chegado próximo de um bom resultado, mas o aprendizado que estou tendo durante o desafio é incrível, espero realizar outros.
+![image](https://github.com/user-attachments/assets/83fc8372-bef7-4d12-ac9a-6050f211574f)
 
 Ao terminar o desafio, convide o 'ELO-SRE' para contribuir com o seu repositório de desafios para que possamos fazer a avaliação. Boa Sorte
 
 <p align="center">
   <img src="ca.jpg" alt="Challange accepted" />
 </p>
-## Entrega do desafio: Carlos Alberto Laurindo Junior // CCE ELO 
-# Desafio repassado ao CCE para treino, espero ter chegado próximo de um bom resultado, mas o aprendizado que estou tendo durante o desafio é incrível, espero realizar outros.
-![image](https://github.com/user-attachments/assets/83fc8372-bef7-4d12-ac9a-6050f211574f)
+
