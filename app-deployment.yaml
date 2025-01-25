@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sre-challenge-app
+  labels:
+    app: sre-challenge-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sre-challenge-app
+  template:
+    metadata:
+      labels:
+        app: sre-challenge-app
+    spec:
+      containers:
+      - name: sre-challenge-app
+        image: sre-challenge-app:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql:3306/employees
+        - name: SPRING_DATASOURCE_USERNAME
+          value: elo_user
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: elo_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sre-challenge-app
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: sre-challenge-app

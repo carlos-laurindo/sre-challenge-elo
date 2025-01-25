@@ -1,0 +1,23 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: my-application-role
+rules:
+- apiGroups: [""] # Recursos de API padrão do Kubernetes
+  resources: ["pods", "services", "configmaps", "secrets"] # Recursos que serão acessados
+  verbs: ["get", "list", "watch", "create", "update", "delete"] # Permissões concedidas
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: default
+  name: my-application-rolebinding
+subjects:
+- kind: User
+  name: my-application-user # Substitua pelo nome do usuário que vai acessar
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: my-application-role
+  apiGroup: rbac.authorization.k8s.io
