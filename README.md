@@ -132,37 +132,30 @@ Como você evitaria que outros serviços em execução no cluster se comunicasse
 
 Segurança:
 
-Use Secrets para senhas: Já configurado para usar Secrets. Verifique se todas as variáveis sensíveis estão armazenadas em Secrets.
-Habilite HTTPS: Utilize TLS/SSL para criptografar as comunicações entre os microsserviços e com o banco de dados.
+Use Secrets para senhas: Já configurado para usar Secrets. Validar se todas as variáveis sensíveis estão armazenadas em Secrets.
+Habilitar HTTPS: Utilize TLS/SSL para criptografar as comunicações entre os microsserviços e com o banco de dados.
 RBAC: Configure RBAC para garantir que apenas usuários e pods autorizados possam acessar recursos sensíveis.
-Escalabilidade e Desempenho:
 
+Escalabilidade e Desempenho:
 Defina limites de recursos para garantir que os pods não consumam recursos excessivos.
 Habilite Horizontal Pod Autoscaler para escalar automaticamente os microsserviços conforme necessário.
 Liveness e Readiness probes para garantir que a aplicação seja monitorada e reiniciada quando necessário.
-Monitoramento e Logs:
 
+Monitoramento e Logs:
 Implemente monitoramento com ferramentas como Prometheus e Grafana.
 Configure logs estruturados e auditoria.
 Controle de Acesso entre Microsserviços:
-Namespaces:
 
+Namespaces:
 Crie Namespaces para isolar os serviços de cada equipe. Por exemplo, equipe-1 e equipe-2
 
 RBAC:
-
 Use Roles e RoleBindings dentro dos namespaces para garantir que cada equipe tenha acesso apenas ao seu serviço.
 Evitar Comunicação Indesejada com o sre-challenge-app:
-Network Policies:
 
+Network Policies:
 Defina Network Policies que restrinjam a comunicação entre namespaces e serviços, permitindo o tráfego apenas do namespace autorizado.
 Service tipo ClusterIP:
-
-Use o tipo ClusterIP para o sre-challenge-app, garantindo que ele não seja acessível fora do cluster ou por outros serviços não autorizados.
-PodSecurityPolicies:
-
-Caso necessário, use PodSecurityPolicies para garantir que apenas pods com permissões específicas possam interagir com o serviço.
-Essas abordagens garantem maior segurança, isolamento e controle sobre o tráfego e o acesso dentro do seu cluster.
 
 
 ## O que é importante para nós?
