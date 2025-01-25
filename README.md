@@ -112,9 +112,13 @@ Essa aplicação tem uma falha de segurança e gostariamos que as credenciais do
    
 Requisitos
 1. Manifesto do kubernetes usando a API de secret com as credenciais do Banco para implantação.
+   [mysql-deployment.yaml](mysql-deployment.yaml)
    
 3. Manifesto do kunernetes da aplicação com as informações da secret criada anteriormente.
+    [app-deployment.yaml](app-deployment.yaml)
+   
 2. Configuração do código da aplicação utilizando uma variável que foi referenciada no secrets do K8s (Application Properties do Java)
+
 
 ### Parte 4 - Perguntas
 
