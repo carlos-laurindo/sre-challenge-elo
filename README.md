@@ -30,12 +30,55 @@ Nesse repositório, fornecemos a você:
 
 ### Parte 1 - Configure os aplicativos
 
+VirtualBox:
+
+Baixe e instale a versão mais recente do VirtualBox.
+
+Durante a instalação, ative a opção para adicionar o VirtualBox ao PATH (opcional, mas recomendado).
+Docker Desktop (para gerenciar imagens):
+
+Baixe e instale o Docker Desktop.
+
+Certifique-se de ativar a integração com WSL2 durante a instalação.
+Após instalar, inicie o Docker Desktop e verifique se ele está funcionando corretamente.
+
+Minikube:
+
+Baixe o binário do Minikube em Minikube Releases.
+Renomeie o arquivo baixado para minikube.exe.
+Copie o arquivo para uma pasta no PATH do Windows (ex.: C:\Windows\System32).
+kubectl (CLI para gerenciar clusters Kubernetes):
+
+Baixe o kubectl em kubectl releases.
+Copie o arquivo para uma pasta no PATH, assim como o Minikube.
+
+Configuração do PATH:
+
+Certifique-se de que as pastas onde estão os executáveis (minikube.exe, kubectl.exe, VBoxManage.exe) estão no PATH do sistema.
+
+2. Configurar e iniciar o Minikube
+
+2.1. Iniciar o cluster Minikube:
+Abra o Prompt de Comando ou PowerShell como Administrador.
+
+Execute o comando para iniciar o Minikube com o VirtualBox como driver:
+
+minikube start --driver=virtualbox
+
+2.2. Verificar o status:
+Após o comando, verifique se o cluster está funcionando:
+
+kubectl get nodes
+Se tudo estiver correto, verá um nó listado com o status Ready.
+
 Gostariamos que essa aplicação sre-challenge-app e seu banco de dados fossem executados em um cluster K8s.
 
 Requisitos
 
 1. A aplicação deve ser acessível de fora do cluster.
-2. Manifestos de implantação do kubernetes para executar com limitação de requests e usando HPA.
+   ![image](https://github.com/user-attachments/assets/de178dee-18ea-4fc9-8d14-399895334cec)
+
+3. Manifestos de implantação do kubernetes para executar com limitação de requests e usando HPA.
 
 ### Parte 2 - Corrigir o problema
 
@@ -50,10 +93,20 @@ sre-challenge-app-59fd5ffc57-lm2xs   1/1     Running   0          7s
 Requisitos
 
 Escreva aqui sobre o problema, a solução, como você a encontrou e qualquer outra coisa que queira compartilhar sobre ela.
+![image](https://github.com/user-attachments/assets/cc1a248d-d1a4-4586-b71f-3abe0181977d)
+
+No arquivo de configuração application.properties:
+spring.datasource.url=jdbc:mysql://test:3306/emp?allowPublicKeyRetrieval=true&useSSL=false
+A configuração acima indica que a aplicação espera que o banco de dados esteja acessível no host test, na porta 3306, com o banco de dados chamado emp.
+No entanto, ajustei essa configuração para utilizar o Service do Kubernetes como host, nomeado como db. Com isso, a configuração ficou assim:
+spring.datasource.url=jdbc:mysql://db:3306/emp?allowPublicKeyRetrieval=true&useSSL=false
+Essa alteração permitiu que a aplicação fosse iniciada corretamente, pois agora ela consegue se conectar ao banco de dados por meio do serviço no Kubernetes.
 
 ### Parte 3 - Melhores práticas
 
 Essa aplicação tem uma falha de segurança e gostariamos que as credenciais do MYSQL fossem armazenadas em uma secret do Kubernetes.
+
+
 
 Requisitos
 1. Manifesto do kubernetes usando a API de secret com as credenciais do Banco para implantação.
