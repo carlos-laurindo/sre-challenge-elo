@@ -25,7 +25,10 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           value: elo_user
         - name: SPRING_DATASOURCE_PASSWORD
-          value: elo_password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: root-password
 ---
 apiVersion: v1
 kind: Service
