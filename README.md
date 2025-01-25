@@ -106,8 +106,7 @@ Essa alteração permitiu que a aplicação fosse iniciada corretamente, pois ag
 
 Essa aplicação tem uma falha de segurança e gostariamos que as credenciais do MYSQL fossem armazenadas em uma secret do Kubernetes.
 
-
-
+   
 Requisitos
 1. Manifesto do kubernetes usando a API de secret com as credenciais do Banco para implantação.
 2. Manifesto do kunernetes da aplicação com as informações da secret criada anteriormente.
